@@ -1,6 +1,6 @@
 {
   "name": "webpush",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A dependency-free Web Push implementation for Node.js",
   "main": "./dist/index.es.js",
   "module": "./dist/index.es.js",
