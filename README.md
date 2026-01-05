@@ -1,5 +1,10 @@
 # WebPush (Node.js + TypeScript)
 
+[![npm version](https://img.shields.io/npm/v/@alexanderslaa/webpush?logo=npm)](https://www.npmjs.com/package/@alexanderslaa/webpush)
+[![License](https://img.shields.io/npm/l/@alexanderslaa/webpush)](https://github.com/alexanderslaa/webpush/blob/main/LICENSE)
+[![CI](https://github.com/alexanderslaa/webpush/actions/workflows/test.yml/badge.svg)](https://github.com/alexanderslaa/webpush/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/alexanderslaa/webpush)](https://codecov.io/gh/alexanderslaa/webpush)
+
 A dependency-free Web Push implementation for Node.js (TypeScript-first).
 
 This library focuses on **standards-compliant payload encryption + VAPID authentication**, and produces request details
