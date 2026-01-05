@@ -22,7 +22,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "docs:build": "typedoc src/index.ts --out docs --name \"webpush 🔔\" --theme default --excludePrivate --excludeProtected"
+    "docs:build": "typedoc src/index.ts --out generated/docs --name \"webpush 🔔\" --theme default --excludePrivate --excludeProtected"
   },
   "repository": {
     "type": "git",
