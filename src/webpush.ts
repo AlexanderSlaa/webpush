@@ -60,12 +60,12 @@ export class WebPush {
     }
 
     /**
-     * Generate the request details (endpoint + fetch init) to send a push message.
+     * Generate the request (endpoint + fetch init) to send a push message.
      *
      * - For `aes128gcm`, this produces an RFC8188 payload body (header block + encrypted records).
      * - For Web Push, defaults to a single record per RFC8291; multi-record requires `allowMultipleRecords: true`.
      */
-    generateRequestDetails(
+    generateRequest(
         subscription: PushSubscription,
         payload?: string | Buffer | Uint8Array | null,
         options?: GenerateRequestOptions
@@ -188,12 +188,18 @@ export class WebPush {
         return {endpoint, init};
     }
 
-    async sendNotification(
+    /**
+     * Method to send notification to subscribed device
+     * @param subscription
+     * @param payload
+     * @param options
+     */
+    async notify(
         subscription: PushSubscription,
         payload?: string | Buffer | Uint8Array | null,
-        options?: GenerateRequestOptions
+        options?: GenerateRequestOptions,
     ): Promise<Response> {
-        const {endpoint, init} = this.generateRequestDetails(subscription, payload, options);
+        const {endpoint, init} = this.generateRequest(subscription, payload, options);
         const res = await fetch(endpoint, init);
         if (!res.ok) throw new WebPushError('Received unexpected response code', res);
         return res;

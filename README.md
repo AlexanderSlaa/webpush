@@ -37,7 +37,7 @@ that can be sent with Node’s built-in `fetch()`.
 
 ### 🧰 Request building
 
-- `generateRequestDetails()` produces `{ endpoint, init }` for `fetch(endpoint, init)`.
+- `generateRequest()` produces `{ endpoint, init }` for `fetch(endpoint, init)`.
 - Sets required headers:
     - `TTL`, `Urgency`, optional `Topic`
     - `Content-Encoding`, `Content-Type`, `Content-Length`
@@ -92,7 +92,7 @@ const subscription = {
     },
 };
 
-const res = await webpush.sendNotification(subscription, "Hello from WebPush!", {
+const res = await webpush.notify(subscription, "Hello from WebPush!", {
     TTL: 60,
 });
 
@@ -162,12 +162,12 @@ This is useful if you want to:
 
 ---
 
-### `webpush.sendNotification(subscription, payload?, options?)`
+### `webpush.notify(subscription, payload?, options?)`
 
 Sends the request using `fetch()`.
 
 ```ts
-const res = await webpush.sendNotification(subscription, "hello");
+const res = await webpush.notify(subscription, "hello");
 ```
 
 Throws `WebPushError` when the push service returns a non-2xx response.
@@ -222,7 +222,7 @@ This library follows typical push-service rules:
 If you want to disable VAPID for a call:
 
 ```ts
-await webpush.sendNotification(subscription, "hello", {
+await webpush.notify(subscription, "hello", {
     vapidDetails: null,
     gcmAPIKey: process.env.GCM_API_KEY!,
 });
@@ -262,7 +262,7 @@ console.log(res.status);
 import {WebPush, WebPushError} from "node-webpush";
 
 try {
-    await webpush.sendNotification(subscription, "hello");
+    await webpush.notify(subscription, "hello");
 } catch (e) {
     if (e instanceof WebPushError) {
         console.error("Push service rejected request:", e.response.status);
