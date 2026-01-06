@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.0...v1.0.1) (2026-01-06)
+
+
+### Bug Fixes
+
+* update repo naming ([4460e38](https://github.com/AlexanderSlaa/node-webpush/commit/4460e3868a12efa0ba319602d5063cc55892b60b))
+
 # 1.0.0 (2026-01-05)
 
 
