@@ -1,3 +1,11 @@
+## [1.0.5](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.4...v1.0.5) (2026-01-06)
+
+
+### Bug Fixes
+
+* rename sendNotifcation method to notify also realign docs ([6960c3a](https://github.com/AlexanderSlaa/node-webpush/commit/6960c3ae1b9a3d0bbedf8b4739b7db51adea5a73))
+* tests ([64de2d8](https://github.com/AlexanderSlaa/node-webpush/commit/64de2d8725c2e16e9990f2da5bd61e3ea72c8ddb))
+
 ## [1.0.4](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.3...v1.0.4) (2026-01-06)
 
 
