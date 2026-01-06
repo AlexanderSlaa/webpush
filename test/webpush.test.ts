@@ -103,12 +103,12 @@ describe("VAPID", () => {
     });
 });
 
-describe("WebPush.generateRequestDetails", () => {
+describe("WebPush.generateRequest", () => {
     it("builds a request without payload (Content-Length = 0)", () => {
         const wp = makeWebPush();
         const sub: PushSubscription = { endpoint: "https://example.com/push" };
 
-        const { endpoint, init } = wp.generateRequestDetails(sub, null);
+        const { endpoint, init } = wp.generateRequest(sub, null);
 
         expect(endpoint).toBe(sub.endpoint);
         expect(init.method).toBe("POST");
@@ -128,7 +128,7 @@ describe("WebPush.generateRequestDetails", () => {
         const sub = makeValidSubscription("https://example.com/push");
 
         const payload = "hello";
-        const { init } = wp.generateRequestDetails(sub, payload, {
+        const { init } = wp.generateRequest(sub, payload, {
             contentEncoding: SupportedContentEncoding.AES_128_GCM,
             TTL: 60,
             urgency: SupportedUrgency.HIGH,
@@ -177,7 +177,7 @@ describe("WebPush.generateRequestDetails", () => {
         // maxDataPerFullRecord = maxPlain - 1 = 1
         // payload length 2 should throw when allowMultipleRecords=false
         expect(() =>
-            wp.generateRequestDetails(sub, Buffer.from("aa"), {
+            wp.generateRequest(sub, Buffer.from("aa"), {
                 contentEncoding: SupportedContentEncoding.AES_128_GCM,
                 rs: MIN_RS, // 18
                 allowMultipleRecords: false,
@@ -189,7 +189,7 @@ describe("WebPush.generateRequestDetails", () => {
         const wp = makeWebPush();
         const sub = makeValidSubscription("https://example.com/push");
 
-        const { init } = wp.generateRequestDetails(sub, Buffer.from("aa"), {
+        const { init } = wp.generateRequest(sub, Buffer.from("aa"), {
             contentEncoding: SupportedContentEncoding.AES_128_GCM,
             rs: MIN_RS, // tiny
             allowMultipleRecords: true,
@@ -205,13 +205,13 @@ describe("WebPush.generateRequestDetails", () => {
         const sub = makeValidSubscription("https://example.com/push");
 
         expect(() =>
-            wp.generateRequestDetails(sub, "hello", {
+            wp.generateRequest(sub, "hello", {
                 topic: "not_valid!!!",
             })
         ).toThrow(/Topic/i);
 
         expect(() =>
-            wp.generateRequestDetails(sub, "hello", {
+            wp.generateRequest(sub, "hello", {
                 topic: "a".repeat(33),
             })
         ).toThrow(/Topic/i);
@@ -221,7 +221,7 @@ describe("WebPush.generateRequestDetails", () => {
         const wp = makeWebPush();
         const sub = makeValidSubscription("https://android.googleapis.com/gcm/send/abc");
 
-        const { init } = wp.generateRequestDetails(sub, "hello", {
+        const { init } = wp.generateRequest(sub, "hello", {
             contentEncoding: SupportedContentEncoding.AES_128_GCM,
             gcmAPIKey: "my-gcm",
         });
@@ -234,7 +234,7 @@ describe("WebPush.generateRequestDetails", () => {
         const wp = makeWebPush();
         const sub = makeValidSubscription("https://fcm.googleapis.com/fcm/send/abc");
 
-        const { init } = wp.generateRequestDetails(sub, "hello", {
+        const { init } = wp.generateRequest(sub, "hello", {
             vapidDetails: null,
             gcmAPIKey: "my-fcm-key",
             contentEncoding: SupportedContentEncoding.AES_128_GCM,
