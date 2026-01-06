@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.1...v1.0.2) (2026-01-06)
+
+
+### Bug Fixes
+
+* missing package-name in readme ([6b17316](https://github.com/AlexanderSlaa/node-webpush/commit/6b173161512ae137cadcfb634419dd2e616e8375))
+
 ## [1.0.1](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.0...v1.0.1) (2026-01-06)
 
 
