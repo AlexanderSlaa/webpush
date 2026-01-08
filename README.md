@@ -169,8 +169,25 @@ Sends the request using `fetch()`.
 ```ts
 const res = await webpush.notify(subscription, "hello");
 ```
+default it return the response even if not successful. 
+It can also throw an error if the push service returns a non-2xx response.
+This can be enabled by:
 
-Throws `WebPushError` when the push service returns a non-2xx response.
+```ts
+import {WebPushError} from "./webpush";
+
+try {
+  const res = await webpush.notify(subscription, "hello", {
+    throwOnInvalidResponse: true //Add this to the options
+  });
+} catch (error: WebPushError){
+    console.error(error);
+    const responseObject  = error.response; //<<-- The resulting response object can still be accessed
+}
+```
+> Throws `WebPushError` when the push service returns a non-2xx response.
+> 
+> This also contains the response but can be handled in the try-catch logic
 
 ---
 

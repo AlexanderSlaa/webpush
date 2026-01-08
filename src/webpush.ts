@@ -197,11 +197,11 @@ export class WebPush {
     async notify(
         subscription: PushSubscription,
         payload?: string | Buffer | Uint8Array | null,
-        options?: GenerateRequestOptions,
+        options?: GenerateRequestOptions & { throwOnInvalidResponse?: boolean },
     ): Promise<Response> {
         const {endpoint, init} = this.generateRequest(subscription, payload, options);
         const res = await fetch(endpoint, init);
-        if (!res.ok) throw new WebPushError('Received unexpected response code', res);
+        if (!res.ok && options?.throwOnInvalidResponse) throw new WebPushError('Received unexpected response code', res);
         return res;
     }
 }

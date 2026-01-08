@@ -16,7 +16,6 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsx examples/index.ts",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
