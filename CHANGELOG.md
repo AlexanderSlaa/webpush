@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/AlexanderSlaa/node-webpush/compare/v1.1.0...v1.1.1) (2026-03-06)
+
+
+### Bug Fixes
+
+* **webpush:** enforce TTL/Urgency precedence and harden CI/test coverage ([81fc127](https://github.com/AlexanderSlaa/node-webpush/commit/81fc12796303bc60860c9df4ccb0e253f9c63089))
+
 # [1.1.0](https://github.com/AlexanderSlaa/node-webpush/compare/v1.0.6...v1.1.0) (2026-01-08)
 
 
